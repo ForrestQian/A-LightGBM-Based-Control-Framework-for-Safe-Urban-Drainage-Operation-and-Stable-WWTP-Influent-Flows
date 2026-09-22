@@ -1,4 +1,0 @@
-numpy
-pandas
-lightgbm
-ruamel.yaml
