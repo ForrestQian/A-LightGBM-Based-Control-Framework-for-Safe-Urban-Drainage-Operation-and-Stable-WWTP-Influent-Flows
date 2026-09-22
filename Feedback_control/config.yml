@@ -1,0 +1,27 @@
+scanning:
+  level_limit:
+    pump:
+      Pump-XL: [-1.8, 1.2]
+      Pump-TJQ: [-2.0, 1.8]
+      Pump-XHJT: [-4.0, 1.5]
+      Pump-HJT: [-2.2, 1.5]
+      Pump-WJT: [-1.8, 1.6]
+      WWTP-2: [0.0, 2.0]
+      WWTP-1: [0.0, 2.0]
+
+# Control thresholds: [can_store_below, can_release_above]
+control:
+  level_limit:
+    pump:
+      Pump-XL: [-0.3, -0.1]
+      Pump-TJQ: [-0.1, 0.1]
+      Pump-XHJT: [-1.2, -1.0]
+      Pump-HJT: [-0.4, -0.2]
+      Pump-WJT: [-0.1, -0.1]
+      WWTP-2: [1.0, 1.0]
+      WWTP-1: [1.0, 1.0]
+
+dispatch_freq_hours: 1
+
+write_output: false
+output_csv: feedback_actions.csv

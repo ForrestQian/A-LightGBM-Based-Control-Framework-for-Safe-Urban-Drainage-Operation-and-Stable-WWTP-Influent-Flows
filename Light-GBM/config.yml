@@ -1,0 +1,45 @@
+# Feature map: target level column -> related flow columns
+# Asset IDs follow Pump-<INITIALS> / WWTP-1|2 (see common/naming.py)
+
+data_relation:
+  Pump-XHJT_level: [Pump-XHJT_flow, Pump-U2_flow]
+  Pump-XL_level: [Pump-XL_flow, Pump-HJT_flow, Pump-U5_flow, Pump-U6_flow]
+  Pump-HJT_level: [Pump-HJT_flow, Pump-U1_flow]
+  Pump-TJQ_level: [Pump-TJQ_flow, Pump-WJT_flow]
+  Pump-WJT_level: [Pump-WJT_flow, Pump-U3_flow, Pump-U4_flow]
+  WWTP-1_level: [WWTP-1_flow, Pump-XL_flow]
+  WWTP-2_level: [WWTP-2_flow, Pump-XHJT_flow, Pump-TJQ_flow]
+
+# null => use wall-clock time; or [Y, M, D, h, m]
+runtime: null
+
+stations:
+  - Pump-XHJT
+  - Pump-XL
+  - Pump-HJT
+  - Pump-TJQ
+  - Pump-WJT
+  - WWTP-1
+  - WWTP-2
+
+# Training / inference hyper-parameters (illustrative defaults)
+lgbm:
+  learning_rate: 0.05
+  num_leaves: 64
+  bagging_fraction: 0.9
+  feature_fraction: 0.8
+  bagging_freq: 4
+  n_estimators: 200
+  early_stopping_rounds: 20
+
+horizon:
+  step_minutes: 5
+  n_steps: 12          # 12 x 5 min = 1 hour
+  lag_steps: 6         # past 30 min flow lags
+
+# Local CSV path for offline runs (optional). Leave null to use synthetic demo data.
+offline_csv: null
+
+# Never enable remote persistence in this public package.
+write_output: false
+output_csv: predictions.csv
