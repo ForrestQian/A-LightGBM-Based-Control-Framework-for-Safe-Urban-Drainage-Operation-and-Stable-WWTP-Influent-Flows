@@ -1,4 +1,4 @@
-# Control Framework (Anonymized Research Package)
+# Control Framework
 
 Hourly genetic-algorithm (GA) dispatch on a connected-tank network model,
 plus minute-scale LightGBM level forecasting and a rule-based decision tree
